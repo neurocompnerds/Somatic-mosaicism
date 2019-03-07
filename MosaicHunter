@@ -1,2 +1,28 @@
 ###Install MosaicHunter in $FASTDIR
 git clone https://github.com/zzhang526/MosaicHunter.git
+
+###Script for Phoenix for single sample without matched control
+############################################################################################
+#!/bin/bash -l
+#SBATCH -N 1
+#SBATCH -n 4
+#SBATCH -p batch
+#SBATCH --time=15:00:00
+#SBATCH --mem=8G
+#SBATCH -o ./log.Mosaic_call.out
+#SBATCH -e ./log.Mosaic_call.err
+#SBATCH --mail-type=ALL
+#SBATCH --mail-user=clare.vaneyk@adelaide.edu.au
+
+cd $FASTDIR/MosaicHunter/
+module load Java/1.8.0_121
+java -jar build/mosaichunter.jar
+-C conf/genome.properties \
+-P input_file=/data/neurogenetics/alignments/Illumina/genomes/R_180411_JOZGEC_DNA_M001/P904.dedup.realigned.recalibrated.bam \
+-P reference_file=/data/neurogenetics/RefSeq/GATK/b37/genome.fa \
+-P mosaic_filter.sex=M \
+-P mosaic_filter.mode=single \
+-P mosaic_filter.dbsnp_file=/data/neurogenetics/RefSeq/GATK/b37/dbsnp_138.b37.vcf \
+-P repetitive_region_filter.bed_file=$FASTDIR/MosaicHunter/resources/all_repeats.b37.bed \
+-P common_site_filter.bed_file=$FASTDIR/MosaicHunter/resources/WGS.error_prone.b37.bed \
+-P ouput_dir=$FASTDIR/MosaicHunter/out
