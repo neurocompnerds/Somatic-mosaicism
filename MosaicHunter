@@ -16,8 +16,7 @@ git clone https://github.com/zzhang526/MosaicHunter.git
 
 cd $FASTDIR/MosaicHunter/
 module load Java/1.8.0_121
-java -jar build/mosaichunter.jar
--C conf/genome.properties \
+java -jar build/mosaichunter.jar -C conf/genome.properties \
 -P input_file=/data/neurogenetics/alignments/Illumina/genomes/R_180411_JOZGEC_DNA_M001/P904.dedup.realigned.recalibrated.bam \
 -P reference_file=/data/neurogenetics/RefSeq/GATK/b37/genome.fa \
 -P mosaic_filter.sex=M \
