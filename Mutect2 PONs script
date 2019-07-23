@@ -28,7 +28,7 @@ usage()
 echo "# A script to generate PONs with gatk Mutect2, designed for the Phoenix supercomputer
 # Requires: GATK and a list of samples
 #
-# Usage sbatch --array 0-(nSamples-1) $0  -I /path/to/control.list -b /path/to/b                                                                                                     am/files [-o /path/to/output] | [ - h | --help ]
+# Usage sbatch --array 0-(nSamples-1) $0  -b /path/to/bam/files [-o /path/to/output] | [ - h | --help ]
 #
 # Options
 # -S    REQUIRED. List of sample ID in a text file
@@ -103,4 +103,4 @@ gatk Mutect2 \
 -tumor ${sampleID[SLURM_ARRAY_TASK_ID]} \
 -R /data/neurogenetics/RefSeq/GATK/b37/human_g1k_v37_decoy.fasta \
 --dbsnp /data/neurogenetics/RefSeq/GATK/dbsnp_138.hg19.vcf \
--O $VcfFolder/${sampleID[$SLURM_ARRAY_TASK_ID]}.mosaic.vcf >> $tmpDir/${sampleID                                                                                                          [$SLURM_ARRAY_TASK_ID]}.pipeline.log 2>&1
+-O $VcfFolder/${sampleID[$SLURM_ARRAY_TASK_ID]}.mosaic.vcf >> $tmpDir/${sampleID[$SLURM_ARRAY_TASK_ID]}.pipeline.log 2>&1
