@@ -99,7 +99,7 @@ fi
 ###On each control sample###
 cd $tmpDir
 gatk Mutect2 \
--I ${sampleID[SLURM_ARRAY_TASK_ID]}.inputBAM.list \
+-I ${sampleID[SLURM_ARRAY_TASK_ID]}.dedup.realigned.recalibrated.bam \
 -tumor ${sampleID[SLURM_ARRAY_TASK_ID]} \
 -R /data/neurogenetics/RefSeq/GATK/b37/human_g1k_v37_decoy.fasta \
 --dbsnp /data/neurogenetics/RefSeq/GATK/dbsnp_138.hg19.vcf \
