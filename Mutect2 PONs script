@@ -1,12 +1,11 @@
 #!/bin/sh
-
 #SBATCH -J NormMutect2
 #SBATCH -o /fast/users/a1092098/launch/slurm-%j.out
 #SBATCH -A robinson
 #SBATCH -p batch
 #SBATCH -N 1
 #SBATCH -n 2
-#SBATCH --time=24:00:00
+#SBATCH --time=48:00:00
 #SBATCH --mem=8GB
 
 # Notification configuration
@@ -32,9 +31,9 @@ echo "# A script to generate PONs with gatk Mutect2, designed for the Phoenix su
 #
 # Options
 # -S    REQUIRED. List of sample ID in a text file
-# -b    REQUIRED. /path/to/bamfiles.bam. Path to where you want to find your bam                                                                                                           files. Every file matching a sample ID will be used.
-# -O    OPTIONAL. Path to where you want to find your file output (if not specif                                                                                                          ied current directory is used)
-# -h or --help  Prints this message.  Or if you got one of the options above wro                                                                                                          ng you'll be reading this too!
+# -b    REQUIRED. /path/to/bamfiles.bam. Path to where you want to find your bam files. Every file matching a sample ID will be used.
+# -O    OPTIONAL. Path to where you want to find your file output (if not specified current directory is used)
+# -h or --help  Prints this message.  Or if you got one of the options above wrong you'll be reading this too!
 #
 #
 # Original: Derived from GATK.HC.Phoenix by Mark Corbett, 16/11/2017
@@ -89,7 +88,7 @@ if [ ! -d $VcfFolder ]; then
         mkdir -p $VcfFolder
 fi
 
-tmpDir=$FASTDIR/tmp/${sampleID[$SLURM_ARRAY_TASK_ID]} # Use a tmp directory for                                                                                                           all of the GATK and samtools temp files
+tmpDir=$FASTDIR/tmp/${sampleID[$SLURM_ARRAY_TASK_ID]} # Use a tmp directory for all of the GATK and samtools temp files
 if [ ! -d $tmpDir ]; then
         mkdir -p $tmpDir
 fi
