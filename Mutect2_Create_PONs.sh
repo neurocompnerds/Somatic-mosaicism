@@ -17,6 +17,6 @@
 module load Java/1.8.0_121
 module load GATK
 
-gatk Mutect2 CreateSomaticPanelOfNormals \
-   -vcfs $FASTDIR/WGS/Mosaic/pon_vcf.list \
-   -O $FASTDIR/WGS/Mosaic/pon.vcf.gz >> $FASTDIR/WGS/Mosaic/CreatePONs.pipeline.log 2>&1
+gatk CreateSomaticPanelOfNormals \
+-vcfs pon_vcf.args \
+-O pon.vcf.gz >> CreatePONs.pipeline.log 2>&1
