@@ -1,11 +1,11 @@
 #!/bin/sh
-#SBATCH -J CreatePONs
+#SBATCH -J Mutect2
 #SBATCH -o /fast/users/a1092098/launch/slurm-%j.out
 #SBATCH -A robinson
 #SBATCH -p batch
 #SBATCH -N 1
 #SBATCH -n 2
-#SBATCH --time=48:00:00
+#SBATCH --time=12:00:00
 #SBATCH --mem=8GB
 
 # Notification configuration
