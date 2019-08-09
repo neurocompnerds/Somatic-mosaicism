@@ -39,7 +39,7 @@ echo "# A script to call somatic variants gatk Mutect2, designed for the Phoenix
 # Modified: (Date; Name; Description)
 # 21/06/2018; Mark Corbett; Modify for Haloplex
 # 09/07/2018; Clare van Eyk; modify for use with Mutect2 command from GATK
-# 09/08/2019; Clare van Eyl; modify to call somatic variants with PONs and gnomad frequencies
+# 09/08/2019; Clare van Eyk; modify to call somatic variants with PONs and gnomad frequencies
 
 "
 }
