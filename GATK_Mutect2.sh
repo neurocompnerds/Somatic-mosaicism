@@ -100,6 +100,6 @@ gatk Mutect2 \
 -tumor ${sampleID[$SLURM_ARRAY_TASK_ID]} \
 -R /data/biohub/Refs/human/gatk_bundle/2.8/b37/human_g1k_v37_decoy.fasta \
 --germline-resource /data/neurogenetics/RefSeq/GATK/b37/af-only-gnomad.hg38.vcf.gz \
---panel-of-normals $FASTDIR/WGS/Mosaic/pon.vcf.gz
+--panel-of-normals $FASTDIR/WGS/Mosaic/pon.vcf.gz \
 -O $VcfFolder/${sampleID[$SLURM_ARRAY_TASK_ID]}.mosaic.PONs_gnomad.vcf >> $tmpDir/${sampleID[$SLURM_ARRAY_TASK_ID]}.somatic.pipeline.log 2>&1
 ##af-of-alleles-not-in-resource - By default, case-only calling now uses 5e-8
