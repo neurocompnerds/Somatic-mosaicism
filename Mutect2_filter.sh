@@ -73,9 +73,9 @@ fi
 # Define batch jobs based on samples
 sampleID=($(cat $SAMPLE))
 
-if [ -z "$bamDir" ]; then # If no bamDir name specified then do not proceed
+if [ -z "$vcfDir" ]; then # If no vcfDir name specified then do not proceed
         usage
-        echo "#ERROR: You need to tell me where to find the bam files."
+        echo "#ERROR: You need to tell me where to find the vcf files."
         exit 1
 fi
 if [ -z "$OutFolder" ]; then # If no output directory then use default directory
