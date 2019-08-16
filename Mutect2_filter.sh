@@ -26,7 +26,7 @@ usage()
 echo "# A script to filter somatic variants called by gatk Mutect2, designed for the Phoenix supercomputer
 # Requires: GATK and a list of samples
 #
-# Usage sbatch --array 0-(nSamples-1) $0  -v /path/to/vcf/files [-o /path/to/output] | [ - h | --help ]
+# Usage sbatch --array 0-(nSamples-1) $0  -v /path/to/vcf/files -S listofsamples.txt [-o /path/to/output] | [ - h | --help ]
 #
 # Options
 # -S    REQUIRED. List of sample ID in a text file
@@ -96,4 +96,5 @@ fi
 cd $tmpDir
 gatk FilterMutectCalls \
 -I $vcfDir/${sampleID[$SLURM_ARRAY_TASK_ID]}.mosaic.PONs_gnomad.vcf \
+--max-germline-posterior 0.1 \
 -O $OutFolder/${sampleID[$SLURM_ARRAY_TASK_ID]}.filtered.vcf >> $tmpDir/${sampleID[$SLURM_ARRAY_TASK_ID]}.filter.pipeline.log 2>&1
