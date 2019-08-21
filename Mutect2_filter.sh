@@ -98,3 +98,6 @@ gatk FilterMutectCalls \
 -I $vcfDir/${sampleID[$SLURM_ARRAY_TASK_ID]}.mosaic.PONs_gnomad.vcf \
 --max-germline-posterior 0.1 \
 -O $OutFolder/${sampleID[$SLURM_ARRAY_TASK_ID]}.filtered.vcf >> $tmpDir/${sampleID[$SLURM_ARRAY_TASK_ID]}.filter.pipeline.log 2>&1
+
+module load BCFtools
+bcftools view -O v -f PASS -i 'FORMAT/AF[0:0] < 0.4' $OutFolder/${sampleID[$SLURM_ARRAY_TASK_ID]}.filtered.vcf > $OutFolder/${sampleID[$SLURM_ARRAY_TASK_ID]}_PASS.vcf
